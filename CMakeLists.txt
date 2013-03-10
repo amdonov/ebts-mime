@@ -8,5 +8,5 @@ include_directories("/usr/include/gmime-2.6" "/usr/include/OpenEBTS"
 target_link_libraries(ebts-mime gmime-2.6 OpenEBTS xml2)
 FIND_PACKAGE(SWIG REQUIRED)
 INCLUDE(${SWIG_USE_FILE})
-SWIG_ADD_MODULE(ebts java ebts.i main.c)
-SWIG_LINK_LIBRARIES(ebts gmime-2.6 OpenEBTS xml2)
+SWIG_ADD_MODULE(libebts java ebts.i main.c)
+SWIG_LINK_LIBRARIES(libebts gmime-2.6 OpenEBTS xml2)
