@@ -5,7 +5,7 @@
 #include <OpenEBTS.h>
 #include <OpenEBTSErrors.h>
 
-int
+void
 add_meta (GMimeMultipart * message, const char *pData)
 {
   GMimeDataWrapper *content;
@@ -29,7 +29,7 @@ add_meta (GMimeMultipart * message, const char *pData)
   g_object_unref (content);
 }
 
-int
+void
 add_image (GMimeMultipart * message, const void *pData, int cbSize,
 	   char *name)
 {
@@ -55,20 +55,14 @@ add_image (GMimeMultipart * message, const void *pData, int cbSize,
 }
 
 int
-main (int argc, char **argv)
+ebts_mime (char *src, char *dest)
 {
   int iRet;
   int nRecs;
   CIWTransaction *pTrans = NULL;
   CIWVerification *pVer = NULL;
 
-  if (argc < 3)
-    {
-      printf ("Usage: ebts mime\n");
-      return 1;
-    }
-
-  iRet = IWRead (argv[1], pVer, &pTrans);
+  iRet = IWRead (src, pVer, &pTrans);
   if (iRet != IW_SUCCESS)
     {
       printf ("Failed to read file");
@@ -232,7 +226,7 @@ main (int argc, char **argv)
   xmlBufferFree (buf);
 
   FILE *fd;
-  fd = fopen (argv[2], "w");
+  fd = fopen (dest, "w");
   if (fd == NULL)
     {
       printf ("File didn't open\n");
@@ -249,5 +243,17 @@ main (int argc, char **argv)
 
   g_mime_shutdown ();
 
+  return 0;
+}
+
+int
+main (int argc, char **argv)
+{
+  if (argc < 3)
+    {
+      printf ("Usage: %s ebts mime\n", argv[0]);
+      return 1;
+    }
+  ebts_mime (argv[1], argv[2]);
   return 0;
 }
