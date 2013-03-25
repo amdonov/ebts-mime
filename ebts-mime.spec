@@ -19,7 +19,7 @@ Requires: java glib2 OpenEBTS
 %build
 cmake . -DCMAKE_INSTALL_PREFIX=$RPM_BUILD_ROOT
 make
-javac -d .*.java
+javac -d . *.java
 jar cvf ebts-mime.jar com
 
 %install
