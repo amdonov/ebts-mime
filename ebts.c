@@ -110,7 +110,7 @@ ebts_mime (char *src, char *dest)
 	      iRet = IWGetImage (pTrans, i, j, &szFormat, &cbSize, &pData);
 	      if (iRet == IW_SUCCESS)
 		{
-		  snprintf (name, 50, "image-%d-%d.%S", i, j, szFormat);
+		  snprintf (name, 50, "image-%d-%d.%s", i, j, szFormat);
 		  add_image (message, pData, cbSize, name);
 		}
 
@@ -237,4 +237,16 @@ ebts_mime (char *src, char *dest)
   g_object_unref (message);
 
   return 0;
+}
+
+void
+ebts_init ()
+{
+  g_mime_init (0);
+}
+
+void
+ebts_shutdown ()
+{
+  g_mime_shutdown ();
 }

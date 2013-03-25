@@ -1,6 +1,5 @@
 %module ebts
 %{
-extern int ebts_mime(char* src, char* dest);
+#include "ebts.h"
 %}
-
-extern int ebts_mime(char* src, char* dest);
+%include "ebts.h"
