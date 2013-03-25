@@ -1,6 +1,6 @@
 Name: ebts-mime          
 Version: 0.1       
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary: C library and Java wrapper for converting EBTS files to MIME files     
 
 License: Booz Allen Hamilton       
@@ -45,6 +45,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Mar 25 2013 Aaron Donovan <amdonov@gmail.com> 0.1-5
+- Correcting typo in javac command (amdonov@gmail.com)
+
 * Mon Mar 25 2013 Aaron Donovan <amdonov@gmail.com> 0.1-4
 - Added init and shutdown methods, moved Java classes to com.bah.biometrics
   package (amdonov@gmail.com)
