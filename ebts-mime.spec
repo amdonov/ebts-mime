@@ -1,6 +1,6 @@
 Name: ebts-mime          
 Version: 0.1       
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary: C library and Java wrapper for converting EBTS files to MIME files     
 
 License: Booz Allen Hamilton       
@@ -45,6 +45,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Mar 25 2013 Aaron Donovan <amdonov@gmail.com> 0.1-2
+- Corrected typo in install command (amdonov@gmail.com)
+
 * Mon Mar 25 2013 Aaron Donovan <amdonov@gmail.com> 0.1-1
 - new package built with tito
 
